@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Youtube</title>
+    <link rel="stylesheet" type="text/css" href="../css/youtube-top-bar.css">
+    <link rel="stylesheet" type="text/css" href="../css/youtube-left-bar.css">
+    <link rel="stylesheet" type="text/css" href="../css/youtube-main.css">
+    <link rel="stylesheet" type="text/css" href="../css/youtube-mobile.css">
+    <link rel="stylesheet" type="text/css" href="../css/public.css">
     <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -13,16 +18,16 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        import "../"
+
         const TopBar = () => {
             
             const logoMenuChildList = [
                 {
-                    id: "logo",
+                    id: "menu",
                     src: "../img/menu-bar.png"
                 },
                 {
-                    id: "menu",
+                    id: "logo",
                     src: "../img/youtube-logo.png"
                 }
             ]
@@ -64,9 +69,11 @@
 
             return(
                 <React.Fragment>
-                    <LogoMenu imgList = {logoMenuChildList}/>
-                    <SearchBox imgList = {searchBoxChildList}/>
-                    <IconBox imgList = {iconBoxChildList}/>
+                    <div id="topBar">
+                        <LogoMenu childList = {logoMenuChildList}/>
+                        <SearchBox childList = {searchBoxChildList}/>
+                        <IconBox childList = {iconBoxChildList}/>
+                    </div>
                 </React.Fragment>
             )
         }
@@ -76,7 +83,10 @@
             return(
                 <div id = "logoMenu">
                     {
-                        props.foreach(element => buttonComponent(element))
+                        props.childList.map(
+                            (element) =>
+                             <ButtonComponent key = {element.id} id = {element.id} src = {element.src}/>
+                         )
                     }
                 </div>
             )
@@ -88,32 +98,38 @@
                 <div id = "searchBox">
                     <input id = "searchBar" type="text"/>
                     {
-                        props.foreach(element => buttonComponent(element))
+                        props.childList.map(
+                            (element) => 
+                            <ButtonComponent key = {element.id} id = {element.id} src = {element.src}/>
+                            )
                     }
                 </div>
             )
         }
 
         const IconBox = (props) => {
-
+  
             return(
                 <div id = "iconBox">
                     {
-                        props.foreach(element => buttonComponent(element))
+                        props.childList.map(
+                            (element) => 
+                            <ButtonComponent key = {element.id} id = {element.id} class = {element.class} src = {element.src}/>
+                            )
                     }
                 </div>
             )
         }
 
-        const buttonComponent = (props) => {
+        const ButtonComponent = (props) => {
             
             return (
-                <button id={props.id}>
-                    <imgComponent src={props.src}/>
+                <button id={props.id} class={props.class}>
+                    <ImgComponent src={props.src}/>
                 </button>
             )
         }
-        const imgComponent = (props) => {
+        const ImgComponent = (props) => {
 
             return (
                 <img src={props.src}/>
