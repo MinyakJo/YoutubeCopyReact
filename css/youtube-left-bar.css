@@ -1,0 +1,197 @@
+/* 
+
+    왼쪽바
+
+*/
+
+/* 로고와 메뉴버튼의 틀 */
+#leftLogoMenu{
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    width: 224px;
+    min-height: 76px;
+    padding-left: 16px;
+    background-color: white;
+}
+/* 로고 왼쪽 메뉴 버튼 */
+#leftMenu{
+    width: 30px;
+    height: 30px;
+    padding: 8px;
+    background-color: transparent;
+}
+/* 유투브 로고 */
+#leftLogo{
+    width: 120px;
+    height: 26.86px;
+    padding: 18px 14px 18px 16px;
+}
+
+
+/* 왼쪽바의 큰틀 */
+
+#leftBar{
+    display: inline-flex;
+    flex-direction: column;
+    width: 240px;
+    left: 0;
+    position: fixed;
+    font-size: 12px;
+    /* 
+        fixed를 하면 height 100%로 설정 가능 
+        100%로 하면 상단바 높이만큼 짤려서 calc 사용
+    */
+    z-index: 999;
+    background-color: white;
+    height: 100%;
+    transition: left 0.7s;
+}
+
+#leftBox{
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #E2E2E2;
+}
+
+/*
+    왼쪽바 버튼
+*/
+
+/* 버튼들의 집합을 위한 틀 */
+.leftButtonBox{
+    padding: 12px 0px;
+    border-bottom: 1px solid #E2E2E2;
+}
+/* 왼쪽 버튼 머릿말 */
+.leftButtonHeader{
+    max-width: 240px;
+    height: 32px;
+    padding: 8px 24px;
+}
+/* 왼쪽 버튼 틀 */
+.leftButton{
+    display: flex;
+    height: 40px;
+    padding: 0px 24px;
+    justify-content: flex-start;
+    align-items: center;
+}
+/* 왼쪽 버튼 이미지 */
+.leftButtonImg{
+    width: 24px;
+    height: 24px;
+    margin-right: 24px;
+}
+/* 왼쪽 버튼 텍스트 */
+.leftButtonText{
+    max-width: 140px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap
+}
+
+/*
+    왼쪽바의 footer
+*/
+
+/* footer 틀 */
+#leftButtonBoxFooter{
+    padding: 12px 0px;
+}
+/*footer 텍스트 틀 */
+.leftButtonBoxFooterTextBox{
+    width: fit-content;
+    height: fit-content;
+    padding: 16px 24px 0;
+}
+/* footer 텍스트1 */
+.leftButtonBoxFooterTextBox span{
+    height: fit-content;
+    padding: 0 8px 0 0;
+}
+/* footer 텍스트2 */
+#leftButtonBoxFooterCopyright{
+    padding: 16px 24px;
+}
+
+
+/*
+
+    작은 왼쪽바
+
+*/
+
+
+#smallLeftBar{
+    flex-direction: column;
+    width: 72px;
+    height: calc(100% - 77px); 
+    margin-top: 78px;
+    border-right: 1px solid whitesmoke;
+    position: fixed;
+    font-size: 10px;
+}
+.smallLeftBarButton{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 72px;
+    height: 74px;
+}
+.smallLeftBarButton img{
+    margin-right: 0;
+    margin-bottom: 6px;
+}
+
+
+/*
+
+    동작들
+
+*/
+
+/*마우스 올려놨을때*/
+.leftButton:hover{
+    background-color: #E2E2E2;
+}
+/*마우스 눌렸을때*/
+.leftButton:active{
+    background-color: #A2A2A2;
+}
+/*작은 사이드 마우스 올렸을때*/
+.smallLeftBarButton:hover{
+    background-color: #E2E2E2;
+}
+/*작은 사이드 마우스 눌렸을때*/
+.smallLeftBarButton:active{
+    background-color: #A2A2A2;
+}
+/*메뉴 버튼 클릭*/
+#menu:active{
+    background-color: #E2E2E2;
+    border-radius: 100%;
+}
+/*작은 메뉴 버튼 클릭*/
+#leftMenu:active{
+    background-color: #E2E2E2;
+    border-radius: 100%;
+}
+/*
+    왼쪽바 스크롤바
+*/
+
+/* 마우스 올릴시 스크롤바 표시 */
+#leftBox:hover{
+    overflow-y:scroll;
+}
+/* 스크롤바 크기 */
+#leftBox::-webkit-scrollBar{
+    width: 7px;
+}
+/* 스크롤바, 색깔 뭉뚝함 조절 */
+#leftBox::-webkit-scrollbar-thumb {
+    background-color: #E2E2E2;
+    border-radius: 10px;
+}

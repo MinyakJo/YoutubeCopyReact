@@ -1,0 +1,79 @@
+/*
+
+    유투브 메인화면
+
+*/
+
+#contents{
+    display: flex;
+    position: fixed;
+    width: calc(100% - 266px);
+    height: calc(100% - 77px);  
+    margin-left: 266px; /* 왼쪽바 240 + 스크롤바 10 + 16비우기*/
+    margin-right: 16px;
+    margin-top: 78px; /* 상단바 77 + 보더 1 */
+    overflow: scroll;
+    flex-wrap: wrap;
+    transition: all 0.7s;
+}
+#contents::-webkit-scrollBar{
+    width: 10px;
+}
+/* 스크롤바, 색깔 뭉뚝함 조절 */
+#contents::-webkit-scrollbar-thumb {
+    background-color: #E2E2E2;
+    border-radius: 10px;
+}
+/* 섬네일 */
+.thumbnail{
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+    margin-left: 8px;
+    margin-right: 8px;
+    width: 17%;
+    max-width: 440px;
+    min-width: 180px;
+}
+/* 섬네일 제목 날짜 업로더프로필 용 상자 */
+.thumbnailTitle{
+    display: flex;
+    flex-direction: row;
+    align-content: space-around;
+    height: fit-content;
+    width: fit-content;
+    padding-right: 10px;
+    flex-basis: 100px;        /*  텍스트 박스 정렬 */
+}
+/* 제목, 날짜, 업로더이름 용 상자*/
+.thumbnailText{
+    max-height: 124px;
+    margin: 12px 0 0 12px;
+}
+/* 섬네일 제목 */
+  .thumbnailTitleText{
+    display: -webkit-box;
+    width: auto;
+    max-width: 210px;
+    max-height: 50px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-wrap: break-word;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+/* 업로더 프로필 */
+.thumbnailTitleAvatar{
+    width: 36px;
+    height: 36px;
+    margin: 12px 0 0 12px;
+}
+/* 업로더 이름 */
+.thumbnailUserText{
+    font-size: 12px;
+    margin-top: 4px;
+}
+/* 업로드 날짜 */
+.thumbnailViewText{
+    font-size: 12px;
+}

@@ -1,0 +1,110 @@
+/*
+
+    상단바
+    
+*/
+
+#topBar{
+    position: fixed;
+
+    /* 
+        flex => block 
+        inline-flex => inline-block    
+    */
+    display: flex;
+
+    /*
+        메인축 방향으로 아이템 정렬하는 속성(수평)
+        justify-content
+    */
+    justify-content: space-between;
+    width: calc(100% - 32px); /* 패딩과 마진만큼 빼기 */
+    min-width: 300px;
+    height: 76px;
+    padding: 0 16px;
+    border-bottom: 1px solid #E2E2E2;
+}
+
+/* 
+    상단바 왼쪽 
+*/
+
+/* 로고와 메뉴버튼의 틀 */
+#logoMenu{
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    padding-right: 16px;
+}
+/* 로고 왼쪽 메뉴 버튼 */
+#menu{
+    width: 30px;
+    height: 30px;
+    padding: 8px;
+    background-color: transparent;
+}
+/* 유투브 로고 */
+#logo{
+    width: 120px;
+    height: 26.86px;
+    padding: 18px 14px 18px 16px;
+}
+
+/*
+    상단바 가운데
+*/
+
+/* 상단바 가운데 검색창의 틀 */
+#searchBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin-left: 40px;
+    padding-right: 4px;
+}
+/* 텍스트 적어넣는 검색창 */
+#searchBar{
+    width: 80%;
+    height: 32px;
+    border: 1px solid #E2E2E2;
+}
+/* 검색버튼 */
+#searchButton{
+    display: flex;
+    width: 64px;
+    height: 36px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #E2E2E2;
+}
+/* 버튼위에 올라갈 이미지 */
+#searchButtonImg{
+    width: 24px;
+    height: 24px;
+}
+/* 버튼 옆 음성검색*/
+#voiceSearchButton{
+    padding: 8px;
+    width: 24px;
+    height: 24px;
+}
+
+/* 
+    상단바 오른쪽
+*/
+
+/* 아이콘들의 틀 */
+#iconBox{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 8px;
+}
+/* 각각의 아이콘들 */
+.icons{
+    display: inline-flex;
+    padding: 8px;
+    width: 24px;
+    height: 24px;
+}

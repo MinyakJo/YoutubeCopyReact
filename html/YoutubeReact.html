@@ -13,13 +13,60 @@
     <div id="root"></div>
 
     <script type="text/babel">
+        import "../"
         const TopBar = () => {
             
+            const logoMenuChildList = [
+                {
+                    id: "logo",
+                    src: "../img/menu-bar.png"
+                },
+                {
+                    id: "menu",
+                    src: "../img/youtube-logo.png"
+                }
+            ]
+
+            const searchBoxChildList = [
+                {
+                    id: "searchButton",
+                    src: "../img/search.png"
+                },
+                {
+                    id: "voiceSearchButton",
+                    src: "../img/voice-search.png"
+                }
+            ]
+
+            const iconBoxChildList = [
+                {
+                    id: "bellIcon",
+                    class: "icons bell",
+                    src: "../img/bell.png"
+                },
+                {
+                    id: "menuIcon",
+                    class: "icons menu",
+                    src: "../img/menu.png"
+                },
+                {
+                    id: "uploadIcon",
+                    class: "icons bell",
+                    src: "../img/upload.png"
+                },
+                {
+                    id: "userIcon",
+                    class: "icons user",
+                    src: "../img/user.png" 
+                }
+            ]
+
+
             return(
                 <React.Fragment>
-                    <LogoMenu/>
-                    <SearchBox/>
-                    <IconBox/>
+                    <LogoMenu imgList = {logoMenuChildList}/>
+                    <SearchBox imgList = {searchBoxChildList}/>
+                    <IconBox imgList = {iconBoxChildList}/>
                 </React.Fragment>
             )
         }
@@ -27,17 +74,58 @@
         const LogoMenu = (props) => {
 
             return(
-                <div>
+                <div id = "logoMenu">
+                    {
+                        props.foreach(element => buttonComponent(element))
+                    }
                 </div>
             )
         }
+
+        const SearchBox = (props) => {
+
+            return(
+                <div id = "searchBox">
+                    <input id = "searchBar" type="text"/>
+                    {
+                        props.foreach(element => buttonComponent(element))
+                    }
+                </div>
+            )
+        }
+
+        const IconBox = (props) => {
+
+            return(
+                <div id = "iconBox">
+                    {
+                        props.foreach(element => buttonComponent(element))
+                    }
+                </div>
+            )
+        }
+
+        const buttonComponent = (props) => {
+            
+            return (
+                <button id={props.id}>
+                    <imgComponent src={props.src}/>
+                </button>
+            )
+        }
+        const imgComponent = (props) => {
+
+            return (
+                <img src={props.src}/>
+            )
+        }
+
     </script>
 
     <script type="text/babel">
         ReactDOM.render(
             <TopBar/>,
-            <LeftBar/>,
-            <Contents/>,
+            
             document.getElementById("root")
         );
     </script>
