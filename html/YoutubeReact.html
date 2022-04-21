@@ -18,9 +18,8 @@
     <div id="root"></div>
 
     <script type="text/babel">
+        const App = () => {
 
-        const TopBar = () => {
-            
             const logoMenuChildList = [
                 {
                     id: "menu",
@@ -66,54 +65,191 @@
                 }
             ]
 
+            const leftLogoMenuChildList = [
+                {
+                    id: "leftMenu",
+                    src: "../img/menu-bar.png"
+                },
+                {
+                    id: "leftLogo",
+                    src: "../img/youtube-logo.png"
+                }
+            ]
+
+            const leftButtonChildList = [
+                [
+                    {
+                        src: "../img/home.png",
+                        text: "홈"
+                    },
+                    {
+                        src: "../img/compass.png",
+                        text: "탐색"
+                    },
+                    {
+                        src: "../img/subscribe.png",
+                        text: "구독"
+                    }
+                ],
+                [
+                    {
+                        src: "../img/playlist.png",
+                        text: "보관함"
+                    },
+                    {
+                        src: "../img/watch-record.png",
+                        text: "시청기록"
+                    },
+                    {
+                        src: "../img/video.png",
+                        text: "내 동영상"
+                    },
+                    {
+                        src: "../img/movie.png",
+                        text: "내 영화"
+                    },
+                    {
+                        src: "../img/clock.png",
+                        text: "나중에 볼 동영상"
+                    },
+                    {
+                        src: "../img/expand-button.png",
+                        text: "더보기"
+                    }
+                ],
+                [
+                    {
+                        src: "../img/user.png",
+                        text: "구독1"
+                    },
+                    {
+                        src: "../img/user.png",
+                        text: "구독2"
+                    },
+                    {
+                        src: "../img/user.png",
+                        text: "구독3"
+                    },
+                    {
+                        src: "../img/user.png",
+                        text: "구독4"
+                    },
+                    {
+                        src: "../img/user.png",
+                        text: "구독5"
+                    },
+                    {
+                        src: "../img/user.png",
+                        text: "구구구구구구구구구ㅜ구구구국독"
+                    }
+                ],
+                [
+                    {
+                        src: "../img/youtube-premium.png",
+                        text: "YoutubePremium"
+                    },
+                    {
+                        src: "../img/movie.png",
+                        text: "영화"
+                    },
+                    {
+                        src: "../img/game.png",
+                        text: "게임"
+                    },
+                    {
+                        src: "../img/radio.png",
+                        text: "실시간"
+                    },
+                    {
+                        src: "../img/light.png",
+                        text: "학습"
+                    },
+                    {
+                        src: "../img/user.png",
+                        text: "스포츠"
+                    }
+                ],
+                [
+                    {
+                        src: "../img/settings.png",
+                        text: "설정"
+                    },
+                    {
+                        src: "../img/flag.png",
+                        text: "신고기록"
+                    },
+                    {
+                        src: "../img/question.png",
+                        text: "고객센터"
+                    },
+                    {
+                        src: "../img/exclamation.png",
+                        text: "의견 보내기"
+                    }
+                ]         
+            ]
+
+            const leftButtonHeaderList = ["", "", "구독", "YOUTUBE프리미엄", ""]
+
+            const leftButtonBoxFooterTextList = [ 
+                                                [ "정보", "보도자료", "저작권", "문의하기", "크리에이터", "광고개발자" ],
+                                                [ "약관", "개인정보처리방침정책", "정책 및 안전", "작동의 원리", "새로운 기능 테스트하기" ],
+                                                [ "© 2022 Google LLC", "CEO: 선다 피차이", "주소: 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA.", "전화: 080-822-1450(무료)" ]
+                                            ]
 
             return(
                 <React.Fragment>
-                    <div id="topBar">
-                        <LogoMenu childList = {logoMenuChildList}/>
-                        <SearchBox childList = {searchBoxChildList}/>
-                        <IconBox childList = {iconBoxChildList}/>
-                    </div>
+                    <TopBarComponent logoMenuChildList = {logoMenuChildList} searchBoxChildList = {searchBoxChildList} iconBoxChildList = {iconBoxChildList}/>
+                    <LeftBarComponent leftLogoMenuChildList = {leftLogoMenuChildList} leftButtonChildList = {leftButtonChildList} leftButtonHeaderList = {leftButtonHeaderList}
+                             leftButtonBoxFooterTextList = {leftButtonBoxFooterTextList}/>
                 </React.Fragment>
             )
         }
 
-        const LogoMenu = (props) => {
+        const TopBarComponent = (props) => {
+
+            return(
+                <header id="topBar">
+                    <LogoMenuComponent childList = {props.logoMenuChildList}/>
+                    <SearchBoxComponent childList = {props.searchBoxChildList}/>
+                    <IconBoxComponent childList = {props.iconBoxChildList}/>
+                </header>
+            )
+        }
+
+        const LogoMenuComponent = (props) => {
 
             return(
                 <div id = "logoMenu">
                     {
-                        props.childList.map(
-                            (element) =>
+                        props.childList.map((element) =>
                              <ButtonComponent key = {element.id} id = {element.id} src = {element.src}/>
-                         )
+                        )
                     }
                 </div>
             )
         }
 
-        const SearchBox = (props) => {
+        const SearchBoxComponent = (props) => {
 
             return(
                 <div id = "searchBox">
                     <input id = "searchBar" type="text"/>
                     {
-                        props.childList.map(
-                            (element) => 
+                        props.childList.map((element) => 
                             <ButtonComponent key = {element.id} id = {element.id} src = {element.src}/>
-                            )
+                        )
                     }
                 </div>
             )
         }
 
-        const IconBox = (props) => {
+        const IconBoxComponent = (props) => {
   
             return(
                 <div id = "iconBox">
                     {
-                        props.childList.map(
-                            (element) => 
+                        props.childList.map((element) => 
                             <ButtonComponent key = {element.id} id = {element.id} class = {element.class} src = {element.src}/>
                             )
                     }
@@ -122,28 +258,163 @@
         }
 
         const ButtonComponent = (props) => {
-            
+
+            const menuClickEvent = (event) => {
+
+                const target = event.currentTarget.id;
+                switch(target){
+                    case "menu":
+                    case "leftMenu":
+                        const leftBar = document.getElementById("leftBar")
+                        // const contents = document.getElementById("contents")
+
+                        if(leftBar.style.left == "-251px"){
+                            leftBar.style.left = "0"
+                            // contents.style.marginLeft = "266px"
+                            // contents.style.width = "calc(100% - 266px)"
+                        }
+                        else{
+                            leftBar.style.left = "-251px"
+                            // contents.style.marginLeft = "89px"
+                            // contents.style.width = "calc(100% - 89px)"
+                        }
+                }
+            }
+
             return (
-                <button id={props.id} class={props.class}>
-                    <ImgComponent src={props.src}/>
+                <button id={props.id} className={props.class} onClick={menuClickEvent}>
+                    <ImgComponent class={null} src={props.src}/>
                 </button>
             )
         }
+
         const ImgComponent = (props) => {
 
             return (
-                <img src={props.src}/>
+                <img className={props.class} src={props.src}/>
             )
         }
 
+        const LeftBarComponent = (props) => {
+
+            return (
+                <nav id="leftBar">
+                    <LeftLogoMenuComponent childList = {props.leftLogoMenuChildList}/>
+                    <LeftBoxComponent childList = {props.leftButtonChildList} 
+                                      childHeaderList = {props.leftButtonHeaderList}
+                                      childListFooterList = {props.leftButtonBoxFooterTextList}/>
+                </nav>
+            )
+        }
+
+        const LeftLogoMenuComponent = (props) => {
+
+            return(
+                <div id = "leftLogoMenu">
+                    {
+                        props.childList.map((element) =>
+                             <ButtonComponent key = {element.id} id = {element.id} src = {element.src}/>
+                         )
+                    }
+                </div>
+            )
+        }
+
+        const LeftBoxComponent = (props) => {
+            
+            return(
+                <div id = "leftBox">
+                    {
+                        props.childList.map((element, index, arr) =>
+                            <LeftButtonBoxComponent key = {index} childList = {element} headerText = {props.childHeaderList[index]}/>
+                        )
+                    }
+                    <LeftBoxFooterComponent childList = {props.childListFooterList}/>
+                </div>
+            )
+        }
+
+        const LeftButtonBoxComponent = (props) => {
+
+            const className = "leftButtonBox"
+            const leftButtonList = props.childList.map(element => 
+                <LeftButtonComponent key={element.text} childList={element}/>
+            )
+
+            if(props.headerText == ""){
+                return(
+                    <div className = {className}>
+                        {leftButtonList}
+                    </div>
+                )
+            }else{
+                return(
+                    <div className = {className}>
+                        <div className = "leftButtonHeader">{props.headerText}</div>
+                        {leftButtonList}
+                    </div>
+                )
+            }
+        }
+
+        const LeftButtonComponent = (props) => {
+
+            return(
+                <div title = {props.childList.text} className = "leftButton">
+                    <ImgComponent class = "leftButtonImg" src = {props.childList.src}/>
+                    <PComponent class = "leftButtonText" text = {props.childList.text}/>
+                </div>
+            )
+        }
+
+        const LeftBoxFooterComponent = (props) => {
+
+            return(
+                <div className = "leftBoxFooter">
+                    {
+                        props.childList.map((element, index, arr) =>
+                            <LeftBoxFooterTextBoxComponent key = {index} text = {element}/>
+                        )
+                    }
+                </div>
+            )
+        }
+
+        const LeftBoxFooterTextBoxComponent = (props) => {
+
+            return(
+                <div className="leftBoxFooterTextBox">
+                    {
+                        props.text.map((element, index, arr) => 
+                            <SpanComponent key = {index} class = "leftBoxFooterText" text = {element}/>
+                        )
+                    }
+                </div>
+            )
+        }
+
+        const PComponent = (props) => {
+
+            return(
+                <p className = {props.class}>{props.text}</p>
+            )
+        }
+
+        const SpanComponent = (props) => {
+
+            return(
+                <span className = {props.className}>
+                    {props.text}
+                </span>
+            )
+        }
     </script>
 
     <script type="text/babel">
         ReactDOM.render(
-            <TopBar/>,
-            
+            <App/>,
             document.getElementById("root")
-        );
+        )
     </script>
 </body>
 </html>
