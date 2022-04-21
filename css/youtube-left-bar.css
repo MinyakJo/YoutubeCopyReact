@@ -37,7 +37,6 @@
     width: 240px;
     left: 0;
     position: fixed;
-    padding-right: 10px;
     font-size: 12px;
     /* 
         fixed를 하면 height 100%로 설정 가능 
@@ -142,7 +141,9 @@
     width: 72px;
     height: 74px;
 }
-.smallLeftBarButton img{
+.smallLeftBarButtonImg{
+    width: 24px;
+    height: 24px;
     margin-right: 0;
     margin-bottom: 6px;
 }

@@ -46,12 +46,12 @@
     flex-basis: 100px;        /*  텍스트 박스 정렬 */
 }
 /* 제목, 날짜, 업로더이름 용 상자*/
-.thumbnailText{
+.thumbnailTextBox{
     max-height: 124px;
     margin: 12px 0 0 12px;
 }
 /* 섬네일 제목 */
-  .thumbnailTitleText{
+  .thumbnailUploadTitle{
     display: -webkit-box;
     width: auto;
     max-width: 210px;
@@ -63,17 +63,17 @@
     -webkit-box-orient: vertical;
 }
 /* 업로더 프로필 */
-.thumbnailTitleAvatar{
+.thumbnailTitleProfile{
     width: 36px;
     height: 36px;
     margin: 12px 0 0 12px;
 }
 /* 업로더 이름 */
-.thumbnailUserText{
+.thumbnailUploaderName{
     font-size: 12px;
     margin-top: 4px;
 }
 /* 업로드 날짜 */
-.thumbnailViewText{
+.thumbnailUploadDate{
     font-size: 12px;
 }

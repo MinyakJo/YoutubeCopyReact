@@ -197,14 +197,166 @@
                                                 [ "© 2022 Google LLC", "CEO: 선다 피차이", "주소: 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA.", "전화: 080-822-1450(무료)" ]
                                             ]
 
+            const smallLeftButtonList = [
+                {
+                    src: "../img/home.png",
+                    text: "홈"
+                },
+                {
+                    src: "../img/compass.png",
+                    text: "탐색"
+                },
+                {
+                    src: "../img/subscribe.png",
+                    text: "구독"
+                },
+                {
+                    src: "../img/playlist.png",
+                    text: "보관함"
+                }
+            ]
+            
+            const thumbnailList = [
+                {
+                    src: "../img/youtube-thumbnail01.jpg",
+                    profile: "../img/user.png",
+                    title: "제목1",
+                    userName: "User1",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail02.jpg",
+                    profile: "../img/user.png",
+                    title: "제목2",
+                    userName: "User2",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail03.jpg",
+                    profile: "../img/user.png",
+                    title: "제목3",
+                    userName: "User3",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail04.jpg",
+                    profile: "../img/user.png",
+                    title: "제목4",
+                    userName: "User4",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail05.jpg",
+                    profile: "../img/user.png",
+                    title: "제목5",
+                    userName: "User5",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail06.jpg",
+                    profile: "../img/user.png",
+                    title: "제목6",
+                    userName: "User6",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail07.jpg",
+                    profile: "../img/user.png",
+                    title: "제목7",
+                    userName: "User7",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail08.jpg",
+                    profile: "../img/user.png",
+                    title: "제목8",
+                    userName: "User8",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail09.jpg",
+                    profile: "../img/user.png",
+                    title: "제목9",
+                    userName: "User9",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail10.jpg",
+                    profile: "../img/user.png",
+                    title: "제목10",
+                    userName: "User10",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail11.jpg",
+                    profile: "../img/user.png",
+                    title: "제목11",
+                    userName: "User11",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail12.jpg",
+                    profile: "../img/user.png",
+                    title: "제목12",
+                    userName: "User12",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail13.jpg",
+                    profile: "../img/user.png",
+                    title: "제목13",
+                    userName: "User13",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail14.jpg",
+                    profile: "../img/user.png",
+                    title: "제목14",
+                    userName: "User14",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail15.jpg",
+                    profile: "../img/user.png",
+                    title: "제목15",
+                    userName: "User15",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail16.jpg",
+                    profile: "../img/user.png",
+                    title: "제목16",
+                    userName: "User16",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail17.jpg",
+                    profile: "../img/user.png",
+                    title: "제목17",
+                    userName: "User17",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail18.jpg",
+                    profile: "../img/user.png",
+                    title: "제목18",
+                    userName: "User18",
+                    date: "2022-04-21"
+                }
+            ]
             return(
                 <React.Fragment>
                     <TopBarComponent logoMenuChildList = {logoMenuChildList} searchBoxChildList = {searchBoxChildList} iconBoxChildList = {iconBoxChildList}/>
                     <LeftBarComponent leftLogoMenuChildList = {leftLogoMenuChildList} leftButtonChildList = {leftButtonChildList} leftButtonHeaderList = {leftButtonHeaderList}
                              leftButtonBoxFooterTextList = {leftButtonBoxFooterTextList}/>
+                    <SmallLeftBarComponent smallLeftButtonList = {smallLeftButtonList}/>
+                    <ContentsComponent thumbnailList = {thumbnailList}/>
+                    <OverlayComponent/>
                 </React.Fragment>
             )
         }
+
+
 
         const TopBarComponent = (props) => {
 
@@ -217,83 +369,20 @@
             )
         }
 
-        const LogoMenuComponent = (props) => {
-
-            return(
-                <div id = "logoMenu">
-                    {
-                        props.childList.map((element) =>
-                             <ButtonComponent key = {element.id} id = {element.id} src = {element.src}/>
-                        )
-                    }
-                </div>
-            )
-        }
+        const LogoMenuComponent = (props) => <div id = "logoMenu"><ButtonClassComponent childList = {props.childList}/></div>
 
         const SearchBoxComponent = (props) => {
 
             return(
                 <div id = "searchBox">
                     <input id = "searchBar" type="text"/>
-                    {
-                        props.childList.map((element) => 
-                            <ButtonComponent key = {element.id} id = {element.id} src = {element.src}/>
-                        )
-                    }
+                    <ButtonClassComponent childList = {props.childList}/>
                 </div>
             )
         }
 
-        const IconBoxComponent = (props) => {
-  
-            return(
-                <div id = "iconBox">
-                    {
-                        props.childList.map((element) => 
-                            <ButtonComponent key = {element.id} id = {element.id} class = {element.class} src = {element.src}/>
-                            )
-                    }
-                </div>
-            )
-        }
+        const IconBoxComponent = (props) => <div id = "iconBox"><ButtonClassComponent childList = {props.childList}/></div>
 
-        const ButtonComponent = (props) => {
-
-            const menuClickEvent = (event) => {
-
-                const target = event.currentTarget.id;
-                switch(target){
-                    case "menu":
-                    case "leftMenu":
-                        const leftBar = document.getElementById("leftBar")
-                        // const contents = document.getElementById("contents")
-
-                        if(leftBar.style.left == "-251px"){
-                            leftBar.style.left = "0"
-                            // contents.style.marginLeft = "266px"
-                            // contents.style.width = "calc(100% - 266px)"
-                        }
-                        else{
-                            leftBar.style.left = "-251px"
-                            // contents.style.marginLeft = "89px"
-                            // contents.style.width = "calc(100% - 89px)"
-                        }
-                }
-            }
-
-            return (
-                <button id={props.id} className={props.class} onClick={menuClickEvent}>
-                    <ImgComponent class={null} src={props.src}/>
-                </button>
-            )
-        }
-
-        const ImgComponent = (props) => {
-
-            return (
-                <img className={props.class} src={props.src}/>
-            )
-        }
 
         const LeftBarComponent = (props) => {
 
@@ -307,18 +396,7 @@
             )
         }
 
-        const LeftLogoMenuComponent = (props) => {
-
-            return(
-                <div id = "leftLogoMenu">
-                    {
-                        props.childList.map((element) =>
-                             <ButtonComponent key = {element.id} id = {element.id} src = {element.src}/>
-                         )
-                    }
-                </div>
-            )
-        }
+        const LeftLogoMenuComponent = (props) => <div id = "leftLogoMenu"><ButtonClassComponent childList = {props.childList}/></div>
 
         const LeftBoxComponent = (props) => {
             
@@ -357,15 +435,7 @@
             }
         }
 
-        const LeftButtonComponent = (props) => {
-
-            return(
-                <div title = {props.childList.text} className = "leftButton">
-                    <ImgComponent class = "leftButtonImg" src = {props.childList.src}/>
-                    <PComponent class = "leftButtonText" text = {props.childList.text}/>
-                </div>
-            )
-        }
+        const LeftButtonComponent = (props) => <ImgTextInDivComponent className = "leftButton" childList = {props.childList}/>
 
         const LeftBoxFooterComponent = (props) => {
 
@@ -383,31 +453,162 @@
         const LeftBoxFooterTextBoxComponent = (props) => {
 
             return(
-                <div className="leftBoxFooterTextBox">
+                <div className = "leftBoxFooterTextBox">
                     {
                         props.text.map((element, index, arr) => 
-                            <SpanComponent key = {index} class = "leftBoxFooterText" text = {element}/>
+                            <SpanComponent key = {index} className = "leftBoxFooterText" text = {element}/>
                         )
                     }
                 </div>
             )
         }
 
-        const PComponent = (props) => {
+
+
+        const SmallLeftBarComponent = (props) => {
 
             return(
-                <p className = {props.class}>{props.text}</p>
+                <nav id = "smallLeftBar">
+                    {
+                        props.smallLeftButtonList.map((element, index, arr) =>
+                            <SmallLeftBarButtonComponent key = {index} childList = {element}/> 
+                        )
+                    }
+                </nav>
             )
         }
 
-        const SpanComponent = (props) => {
+        const SmallLeftBarButtonComponent = (props) => <ImgTextInDivComponent className = "smallLeftBarButton" childList = {props.childList}/>
 
-            return(
-                <span className = {props.className}>
-                    {props.text}
-                </span>
+
+
+        const ContentsComponent = (props) => {
+
+            return (
+                <main id = "contents">
+                    {
+                        props.thumbnailList.map((element, index, arr) =>
+                            <ThumbnailComponent key = {index} childList = {element}/>)
+                    }
+                </main>
             )
         }
+
+        const ThumbnailComponent = (props) => {
+
+            const className = "thumbnail"
+            const childList = props.childList
+
+            return(
+                <main className = {className}>
+                    <ImgComponent className = {`${className}Img`} src = {childList.src}/>
+                    <ThumbnailTitle childList = {childList}/>
+                </main>
+            )
+        }
+
+        const ThumbnailTitle = (props) => {
+
+            const className = "thumbnailTitle"
+            const childList = props.childList
+
+            return(
+                <div className = {className}>
+                    <ImgComponent className = {`${className}Profile`} src = {childList.profile}/>
+                    <ThumbnailTextBox childList = {childList}/>
+                </div>
+            )
+        }
+
+        const ThumbnailTextBox = (props) => {
+
+            const childClassName = "thumbnailUpload"
+            const childList = props.childList
+
+            return(
+                <div className = "thumbnailTextBox">
+                    <H1Component className = {`${childClassName}Title`} text = {childList.title}/>
+                    <PComponent className = {`${childClassName}erName`} text = {childList.userName}/>
+                    <PComponent className = {`${childClassName}Date`} text = {childList.date}/>
+                </div>
+            )
+        }
+
+
+
+        const OverlayComponent = () => <ButtonComponent id = "overlay" style={{display:"none"}}/>
+
+
+
+        const H1Component = (props) => <h1 className = {props.clasName}>{props.text}</h1>
+
+        const PComponent = (props) => <p className = {props.className}>{props.text}</p>
+
+        const SpanComponent = (props) => <span className = {props.className}>{props.text}</span>
+
+        const ImgComponent = (props) => <img className={props.className} src={props.src}/>
+
+        const ButtonComponent = (props) => {
+
+            const menuClickEvent = (event) => {
+
+                const target = event.currentTarget.id;
+                switch(target){
+                    case "menu":
+                    case "leftMenu":
+                    case "overlay":
+                        const leftBar = document.getElementById("leftBar")
+                        const contents = document.getElementById("contents")
+
+                        if(leftBar.style.left == "-251px"){
+                            leftBar.style.left = "0";
+                            smallLeftBar.style.display = "none";
+                            contents.style.marginLeft = "266px";
+                            contents.style.width = "calc(100% - 266px)";
+                            if(matchMedia("screen and (max-width: 1280px)").matches){
+                                document.getElementById("overlay").style.display = "block"
+                            }
+                        }
+                        else{
+                            leftBar.style.left = "-251px";
+                            smallLeftBar.style.display = "inline-flex";
+                            contents.style.marginLeft = "89px";
+                            contents.style.width = "calc(100% - 89px)";
+                            if(matchMedia("screen and (max-width: 9999px)").matches){
+                                document.getElementById("overlay").style.display = "none"
+                            }
+                        }
+                }
+            }
+
+            return(
+                <button id={props.id} className={props.className} onClick={menuClickEvent}>
+                    <ImgComponent className={null} src={props.src}/>
+                </button>
+            )
+        }
+
+        const ButtonClassComponent = (props) => {
+
+            return(
+                props.childList.map((element) =>
+                    <ButtonComponent key = {element.id} id = {element.id} className = {element.class} src = {element.src}/>
+                )
+            )
+        }
+       
+        const ImgTextInDivComponent = (props) => {
+
+            const childList = props.childList
+
+            return(
+                <div title = {childList.text} className = {props.className}>
+                    <ImgComponent className = {`${props.className}Img`} src = {childList.src}/>
+                    <PComponent className = {`${props.className}Text`} text = {childList.text}/>
+                </div>
+            )
+        }
+
     </script>
 
     <script type="text/babel">
