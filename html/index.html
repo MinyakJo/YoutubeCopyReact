@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube</title>
+    <link rel="stylesheet" type="text/css" href="../css/youtube-top-bar.css">
+    <link rel="stylesheet" type="text/css" href="../css/youtube-left-bar.css">
+    <link rel="stylesheet" type="text/css" href="../css/youtube-main.css">
+    <link rel="stylesheet" type="text/css" href="../css/youtube-mobile.css">
+    <link rel="stylesheet" type="text/css" href="../css/public.css">
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const App = () => {
+
+            const logoMenuChildList = [
+                {
+                    id: "menu",
+                    src: "../img/menu-bar.png"
+                },
+                {
+                    id: "logo",
+                    src: "../img/youtube-logo.png"
+                }
+            ]
+
+            const searchBoxChildList = [
+                {
+                    id: "searchButton",
+                    src: "../img/search.png"
+                },
+                {
+                    id: "voiceSearchButton",
+                    src: "../img/voice-search.png"
+                }
+            ]
+
+            const iconBoxChildList = [
+                {
+                    id: "bellIcon",
+                    class: "icons bell",
+                    src: "../img/bell.png"
+                },
+                {
+                    id: "menuIcon",
+                    class: "icons menu",
+                    src: "../img/menu.png"
+                },
+                {
+                    id: "uploadIcon",
+                    class: "icons bell",
+                    src: "../img/upload.png"
+                },
+                {
+                    id: "userIcon",
+                    class: "icons user",
+                    src: "../img/user.png" 
+                }
+            ]
+
+            const leftLogoMenuChildList = [
+                {
+                    id: "leftMenu",
+                    src: "../img/menu-bar.png"
+                },
+                {
+                    id: "leftLogo",
+                    src: "../img/youtube-logo.png"
+                }
+            ]
+
+            const leftButtonChildList = [
+                [
+                    {
+                        src: "../img/home.png",
+                        text: "홈"
+                    },
+                    {
+                        src: "../img/compass.png",
+                        text: "탐색"
+                    },
+                    {
+                        src: "../img/subscribe.png",
+                        text: "구독"
+                    }
+                ],
+                [
+                    {
+                        src: "../img/playlist.png",
+                        text: "보관함"
+                    },
+                    {
+                        src: "../img/watch-record.png",
+                        text: "시청기록"
+                    },
+                    {
+                        src: "../img/video.png",
+                        text: "내 동영상"
+                    },
+                    {
+                        src: "../img/movie.png",
+                        text: "내 영화"
+                    },
+                    {
+                        src: "../img/clock.png",
+                        text: "나중에 볼 동영상"
+                    },
+                    {
+                        src: "../img/expand-button.png",
+                        text: "더보기"
+                    }
+                ],
+                [
+                    {
+                        src: "../img/user.png",
+                        text: "구독1"
+                    },
+                    {
+                        src: "../img/user.png",
+                        text: "구독2"
+                    },
+                    {
+                        src: "../img/user.png",
+                        text: "구독3"
+                    },
+                    {
+                        src: "../img/user.png",
+                        text: "구독4"
+                    },
+                    {
+                        src: "../img/user.png",
+                        text: "구독5"
+                    },
+                    {
+                        src: "../img/user.png",
+                        text: "구구구구구구구구구ㅜ구구구국독"
+                    }
+                ],
+                [
+                    {
+                        src: "../img/youtube-premium.png",
+                        text: "YoutubePremium"
+                    },
+                    {
+                        src: "../img/movie.png",
+                        text: "영화"
+                    },
+                    {
+                        src: "../img/game.png",
+                        text: "게임"
+                    },
+                    {
+                        src: "../img/radio.png",
+                        text: "실시간"
+                    },
+                    {
+                        src: "../img/light.png",
+                        text: "학습"
+                    },
+                    {
+                        src: "../img/user.png",
+                        text: "스포츠"
+                    }
+                ],
+                [
+                    {
+                        src: "../img/settings.png",
+                        text: "설정"
+                    },
+                    {
+                        src: "../img/flag.png",
+                        text: "신고기록"
+                    },
+                    {
+                        src: "../img/question.png",
+                        text: "고객센터"
+                    },
+                    {
+                        src: "../img/exclamation.png",
+                        text: "의견 보내기"
+                    }
+                ]         
+            ]
+
+            const leftButtonHeaderList = ["", "", "구독", "YOUTUBE프리미엄", ""]
+
+            const leftButtonBoxFooterTextList = [ 
+                                                [ "정보", "보도자료", "저작권", "문의하기", "크리에이터", "광고개발자" ],
+                                                [ "약관", "개인정보처리방침정책", "정책 및 안전", "작동의 원리", "새로운 기능 테스트하기" ],
+                                                [ "© 2022 Google LLC", "CEO: 선다 피차이", "주소: 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA.", "전화: 080-822-1450(무료)" ]
+                                            ]
+
+            const smallLeftButtonList = [
+                {
+                    src: "../img/home.png",
+                    text: "홈"
+                },
+                {
+                    src: "../img/compass.png",
+                    text: "탐색"
+                },
+                {
+                    src: "../img/subscribe.png",
+                    text: "구독"
+                },
+                {
+                    src: "../img/playlist.png",
+                    text: "보관함"
+                }
+            ]
+            
+            const thumbnailList = [
+                {
+                    src: "../img/youtube-thumbnail01.jpg",
+                    profile: "../img/user.png",
+                    title: "제목1",
+                    userName: "User1",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail02.jpg",
+                    profile: "../img/user.png",
+                    title: "제목2",
+                    userName: "User2",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail03.jpg",
+                    profile: "../img/user.png",
+                    title: "제목3",
+                    userName: "User3",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail04.jpg",
+                    profile: "../img/user.png",
+                    title: "제목4",
+                    userName: "User4",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail05.jpg",
+                    profile: "../img/user.png",
+                    title: "제목5",
+                    userName: "User5",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail06.jpg",
+                    profile: "../img/user.png",
+                    title: "제목6",
+                    userName: "User6",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail07.jpg",
+                    profile: "../img/user.png",
+                    title: "제목7",
+                    userName: "User7",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail08.jpg",
+                    profile: "../img/user.png",
+                    title: "제목8",
+                    userName: "User8",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail09.jpg",
+                    profile: "../img/user.png",
+                    title: "제목9",
+                    userName: "User9",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail10.jpg",
+                    profile: "../img/user.png",
+                    title: "제목10",
+                    userName: "User10",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail11.jpg",
+                    profile: "../img/user.png",
+                    title: "제목11",
+                    userName: "User11",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail12.jpg",
+                    profile: "../img/user.png",
+                    title: "제목12",
+                    userName: "User12",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail13.jpg",
+                    profile: "../img/user.png",
+                    title: "제목13",
+                    userName: "User13",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail14.jpg",
+                    profile: "../img/user.png",
+                    title: "제목14",
+                    userName: "User14",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail15.jpg",
+                    profile: "../img/user.png",
+                    title: "제목15",
+                    userName: "User15",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail16.jpg",
+                    profile: "../img/user.png",
+                    title: "제목16",
+                    userName: "User16",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail17.jpg",
+                    profile: "../img/user.png",
+                    title: "제목17",
+                    userName: "User17",
+                    date: "2022-04-21"
+                },
+                {
+                    src: "../img/youtube-thumbnail18.jpg",
+                    profile: "../img/user.png",
+                    title: "제목18",
+                    userName: "User18",
+                    date: "2022-04-21"
+                }
+            ]
+            
+            return(
+                <React.Fragment>
+                    <TopBarComponent logoMenuChildList = {logoMenuChildList} searchBoxChildList = {searchBoxChildList} iconBoxChildList = {iconBoxChildList}/>
+                    <LeftBarComponent leftLogoMenuChildList = {leftLogoMenuChildList} leftButtonChildList = {leftButtonChildList} leftButtonHeaderList = {leftButtonHeaderList}
+                             leftButtonBoxFooterTextList = {leftButtonBoxFooterTextList}/>
+                    <SmallLeftBarComponent smallLeftButtonList = {smallLeftButtonList}/>
+                    <ContentsComponent thumbnailList = {thumbnailList}/>
+                    <OverlayComponent/>
+                </React.Fragment>
+            )
+        }
+
+
+
+        const TopBarComponent = (props) => {
+
+            return(
+                <header id="topBar">
+                    <LogoMenuComponent childList = {props.logoMenuChildList}/>
+                    <SearchBoxComponent childList = {props.searchBoxChildList}/>
+                    <IconBoxComponent childList = {props.iconBoxChildList}/>
+                </header>
+            )
+        }
+
+        const LogoMenuComponent = (props) => <div id = "logoMenu"><ButtonClassComponent childList = {props.childList}/></div>
+
+        const SearchBoxComponent = (props) => {
+
+            return(
+                <div id = "searchBox">
+                    <input id = "searchBar" type="text"/>
+                    <ButtonClassComponent childList = {props.childList}/>
+                </div>
+            )
+        }
+
+        const IconBoxComponent = (props) => <div id = "iconBox"><ButtonClassComponent childList = {props.childList}/></div>
+
+
+        const LeftBarComponent = (props) => {
+
+            return (
+                <nav id="leftBar">
+                    <LeftLogoMenuComponent childList = {props.leftLogoMenuChildList}/>
+                    <LeftBoxComponent childList = {props.leftButtonChildList} 
+                                      childHeaderList = {props.leftButtonHeaderList}
+                                      childListFooterList = {props.leftButtonBoxFooterTextList}/>
+                </nav>
+            )
+        }
+
+        const LeftLogoMenuComponent = (props) => <div id = "leftLogoMenu"><ButtonClassComponent childList = {props.childList}/></div>
+
+        const LeftBoxComponent = (props) => {
+            
+            return(
+                <div id = "leftBox">
+                    {
+                        props.childList.map((element, index, arr) =>
+                            <LeftButtonBoxComponent key = {index} childList = {element} headerText = {props.childHeaderList[index]}/>
+                        )
+                    }
+                    <LeftBoxFooterComponent childList = {props.childListFooterList}/>
+                </div>
+            )
+        }
+
+        const LeftButtonBoxComponent = (props) => {
+
+            const className = "leftButtonBox"
+            const leftButtonList = props.childList.map(element => 
+                <LeftButtonComponent key={element.text} childList={element}/>
+            )
+
+            if(props.headerText == ""){
+                return(
+                    <div className = {className}>
+                        {leftButtonList}
+                    </div>
+                )
+            }else{
+                return(
+                    <div className = {className}>
+                        <div className = "leftButtonHeader">{props.headerText}</div>
+                        {leftButtonList}
+                    </div>
+                )
+            }
+        }
+
+        const LeftButtonComponent = (props) => <ImgTextInDivComponent className = "leftButton" childList = {props.childList}/>
+
+        const LeftBoxFooterComponent = (props) => {
+
+            return(
+                <div className = "leftBoxFooter">
+                    {
+                        props.childList.map((element, index, arr) =>
+                            <LeftBoxFooterTextBoxComponent key = {index} text = {element}/>
+                        )
+                    }
+                </div>
+            )
+        }
+
+        const LeftBoxFooterTextBoxComponent = (props) => {
+
+            return(
+                <div className = "leftBoxFooterTextBox">
+                    {
+                        props.text.map((element, index, arr) => 
+                            <SpanComponent key = {index} className = "leftBoxFooterText" text = {element}/>
+                        )
+                    }
+                </div>
+            )
+        }
+
+
+
+        const SmallLeftBarComponent = (props) => {
+
+            return(
+                <nav id = "smallLeftBar">
+                    {
+                        props.smallLeftButtonList.map((element, index, arr) =>
+                            <SmallLeftBarButtonComponent key = {index} childList = {element}/> 
+                        )
+                    }
+                </nav>
+            )
+        }
+
+        const SmallLeftBarButtonComponent = (props) => <ImgTextInDivComponent className = "smallLeftBarButton" childList = {props.childList}/>
+
+
+
+        const ContentsComponent = (props) => {
+
+            return (
+                <main id = "contents">
+                    {
+                        props.thumbnailList.map((element, index, arr) =>
+                            <ThumbnailComponent key = {index} childList = {element}/>)
+                    }
+                </main>
+            )
+        }
+
+        const ThumbnailComponent = (props) => {
+
+            const className = "thumbnail"
+            const childList = props.childList
+
+            return(
+                <main className = {className}>
+                    <ImgComponent className = {`${className}Img`} src = {childList.src}/>
+                    <ThumbnailTitle childList = {childList}/>
+                </main>
+            )
+        }
+
+        const ThumbnailTitle = (props) => {
+
+            const className = "thumbnailTitle"
+            const childList = props.childList
+
+            return(
+                <div className = {className}>
+                    <ImgComponent className = {`${className}Profile`} src = {childList.profile}/>
+                    <ThumbnailTextBox childList = {childList}/>
+                </div>
+            )
+        }
+
+        const ThumbnailTextBox = (props) => {
+
+            const childClassName = "thumbnailUpload"
+            const childList = props.childList
+
+            return(
+                <div className = "thumbnailTextBox">
+                    <H1Component className = {`${childClassName}Title`} text = {childList.title}/>
+                    <PComponent className = {`${childClassName}erName`} text = {childList.userName}/>
+                    <PComponent className = {`${childClassName}Date`} text = {childList.date}/>
+                </div>
+            )
+        }
+
+
+
+        const OverlayComponent = () => <ButtonComponent id = "overlay" style={{display:"none"}}/>
+
+
+
+        const H1Component = (props) => <h1 className = {props.clasName}>{props.text}</h1>
+
+        const PComponent = (props) => <p className = {props.className}>{props.text}</p>
+
+        const SpanComponent = (props) => <span className = {props.className}>{props.text}</span>
+
+        const ImgComponent = (props) => <img className={props.className} src={props.src}/>
+
+        const ButtonComponent = (props) => {
+
+            const menuClickEvent = (event) => {
+
+                const target = event.currentTarget.id;
+                switch(target){
+                    case "menu":
+                    case "leftMenu":
+                    case "overlay":
+                        const leftBar = document.getElementById("leftBar")
+                        const contents = document.getElementById("contents")
+
+                        if(leftBar.style.left == "-251px"){
+                            leftBar.style.left = "0";
+                            smallLeftBar.style.display = "none";
+                            contents.style.marginLeft = "266px";
+                            contents.style.width = "calc(100% - 266px)";
+                            if(matchMedia("screen and (max-width: 1280px)").matches){
+                                document.getElementById("overlay").style.display = "block"
+                            }
+                        }
+                        else{
+                            leftBar.style.left = "-251px";
+                            smallLeftBar.style.display = "inline-flex";
+                            contents.style.marginLeft = "89px";
+                            contents.style.width = "calc(100% - 89px)";
+                            if(matchMedia("screen and (max-width: 9999px)").matches){
+                                document.getElementById("overlay").style.display = "none"
+                            }
+                        }
+                }
+            }
+
+            return(
+                <button id={props.id} className={props.className} onClick={menuClickEvent}>
+                    <ImgComponent className={null} src={props.src}/>
+                </button>
+            )
+        }
+
+        const ButtonClassComponent = (props) => {
+
+            return(
+                props.childList.map((element) =>
+                    <ButtonComponent key = {element.id} id = {element.id} className = {element.class} src = {element.src}/>
+                )
+            )
+        }
+       
+        const ImgTextInDivComponent = (props) => {
+
+            const childList = props.childList
+
+            return(
+                <div title = {childList.text} className = {props.className}>
+                    <ImgComponent className = {`${props.className}Img`} src = {childList.src}/>
+                    <PComponent className = {`${props.className}Text`} text = {childList.text}/>
+                </div>
+            )
+        }
+
+    </script>
+
+    <script type="text/babel">
+        ReactDOM.render(
+            <App/>,
+            document.getElementById("root")
+        )
+    </script>
+</body>
+</html>
