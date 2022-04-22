@@ -18,6 +18,8 @@
     <div id="root"></div>
 
     <script type="text/babel">
+        let state = ""
+
         const App = () => {
 
             const logoMenuChildList = [
@@ -357,8 +359,6 @@
             )
         }
 
-
-
         const TopBarComponent = (props) => {
 
             return(
@@ -369,9 +369,7 @@
                 </header>
             )
         }
-
         const LogoMenuComponent = (props) => <div id = "logoMenu"><ButtonClassComponent childList = {props.childList}/></div>
-
         const SearchBoxComponent = (props) => {
 
             return(
@@ -381,7 +379,6 @@
                 </div>
             )
         }
-
         const IconBoxComponent = (props) => <div id = "iconBox"><ButtonClassComponent childList = {props.childList}/></div>
 
 
@@ -396,9 +393,7 @@
                 </nav>
             )
         }
-
         const LeftLogoMenuComponent = (props) => <div id = "leftLogoMenu"><ButtonClassComponent childList = {props.childList}/></div>
-
         const LeftBoxComponent = (props) => {
             
             return(
@@ -412,7 +407,6 @@
                 </div>
             )
         }
-
         const LeftButtonBoxComponent = (props) => {
 
             const className = "leftButtonBox"
@@ -420,9 +414,27 @@
                 <LeftButtonComponent key={element.text} childList={element}/>
             )
 
+            const onClickEvent = (event) => {
+
+               const clickButton = document.getElementsByClassName("leftButton")
+               const target = event.target.title;
+
+               switch(target){
+                   case "홈":
+                       state = target
+                       break
+
+                   case "탐색":
+                       state = target
+                       break
+               }
+
+               console.log(state)
+            }
+
             if(props.headerText == ""){
                 return(
-                    <div className = {className}>
+                    <div className = {className} onClick={onClickEvent}>
                         {leftButtonList}
                     </div>
                 )
@@ -435,9 +447,7 @@
                 )
             }
         }
-
         const LeftButtonComponent = (props) => <ImgTextInDivComponent className = "leftButton" childList = {props.childList}/>
-
         const LeftBoxFooterComponent = (props) => {
 
             return(
@@ -450,7 +460,6 @@
                 </div>
             )
         }
-
         const LeftBoxFooterTextBoxComponent = (props) => {
 
             return(
@@ -465,7 +474,6 @@
         }
 
 
-
         const SmallLeftBarComponent = (props) => {
 
             return(
@@ -478,23 +486,27 @@
                 </nav>
             )
         }
-
         const SmallLeftBarButtonComponent = (props) => <ImgTextInDivComponent className = "smallLeftBarButton" childList = {props.childList}/>
-
 
 
         const ContentsComponent = (props) => {
 
-            return (
-                <main id = "contents">
-                    {
-                        props.thumbnailList.map((element, index, arr) =>
-                            <ThumbnailComponent key = {index} childList = {element}/>)
-                    }
-                </main>
-            )
+            if(state == "홈" || state == ""){
+                return (
+                    <main id = "contents">
+                        {
+                            props.thumbnailList.map((element, index, arr) =>
+                                <ThumbnailComponent key = {index} childList = {element}/>)
+                        }
+                    </main>
+                )
+            }else if(state == "탐색"){
+                return (
+                    <main id = "compassContents">
+                    </main>
+                )
+            }
         }
-
         const ThumbnailComponent = (props) => {
 
             const className = "thumbnail"
@@ -507,7 +519,6 @@
                 </main>
             )
         }
-
         const ThumbnailTitle = (props) => {
 
             const className = "thumbnailTitle"
@@ -520,7 +531,6 @@
                 </div>
             )
         }
-
         const ThumbnailTextBox = (props) => {
 
             const childClassName = "thumbnailUpload"
@@ -536,24 +546,19 @@
         }
 
 
-
         const OverlayComponent = () => <ButtonComponent id = "overlay" style={{display:"none"}}/>
 
 
-
         const H1Component = (props) => <h1 className = {props.clasName}>{props.text}</h1>
-
         const PComponent = (props) => <p className = {props.className}>{props.text}</p>
-
         const SpanComponent = (props) => <span className = {props.className}>{props.text}</span>
-
         const ImgComponent = (props) => <img className={props.className} src={props.src}/>
-
         const ButtonComponent = (props) => {
 
             const menuClickEvent = (event) => {
 
                 const target = event.currentTarget.id;
+                
                 switch(target){
                     case "menu":
                     case "leftMenu":
@@ -579,6 +584,9 @@
                                 document.getElementById("overlay").style.display = "none"
                             }
                         }
+                        break
+
+                    
                 }
             }
 
@@ -588,7 +596,6 @@
                 </button>
             )
         }
-
         const ButtonClassComponent = (props) => {
 
             return(
@@ -596,8 +603,7 @@
                     <ButtonComponent key = {element.id} id = {element.id} className = {element.class} src = {element.src}/>
                 )
             )
-        }
-       
+        }     
         const ImgTextInDivComponent = (props) => {
 
             const childList = props.childList
@@ -609,7 +615,6 @@
                 </div>
             )
         }
-
     </script>
 
     <script type="text/babel">
