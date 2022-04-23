@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="../css/youtube-top-bar.css">
     <link rel="stylesheet" type="text/css" href="../css/youtube-left-bar.css">
     <link rel="stylesheet" type="text/css" href="../css/youtube-main.css">
+    <link rel="stylesheet" type="text/css" href="../css/youtube-quest.css">
     <link rel="stylesheet" type="text/css" href="../css/youtube-mobile.css">
     <link rel="stylesheet" type="text/css" href="../css/public.css">
     <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
@@ -18,7 +19,6 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        let state = ""
 
         const App = () => {
 
@@ -346,14 +346,59 @@
                     date: "2022-04-21"
                 }
             ]
-            
+
+            const risingCreaterName = "조민혁"
+            const risingCreaterProfile = "../img/user.png"
+
+            const risingCreaterContentList = [
+                {
+                    name: risingCreaterName,
+                    src: "../img/youtube-thumbnail19.png",
+                    title: "가나다라마바사아자차카타파하",
+                    viewCount: 1
+                },
+                {
+                    name: risingCreaterName,
+                    src: "../img/youtube-thumbnail19.png",
+                    title: "가나다라마바사아자차카타파하",
+                    viewCount: 1
+                },
+                {
+                    name: risingCreaterName,
+                    src: "../img/youtube-thumbnail19.png",
+                    title: "가나다라마바사아자차카타파하",
+                    viewCount: 1
+                },
+                {
+                    name: risingCreaterName,
+                    src: "../img/youtube-thumbnail19.png",
+                    title: "가나다라마바사아자차카타파하",
+                    viewCount: 1
+                }
+            ]
+
+            const risingContentList = [
+                {
+                    src: "../img/youtube-thumbnail20.png",
+                    title: "가나다라마바사아자차카타파하",
+                    name: "조민혁",
+                    description: "아름다운 우리말 사랑해요 세종대왕 한글만만세",
+                    viewCount: 0
+                }
+            ]
+
+            const[state, setState] = React.useState(0)
+
             return(
                 <React.Fragment>
                     <TopBarComponent logoMenuChildList = {logoMenuChildList} searchBoxChildList = {searchBoxChildList} iconBoxChildList = {iconBoxChildList}/>
                     <LeftBarComponent leftLogoMenuChildList = {leftLogoMenuChildList} leftButtonChildList = {leftButtonChildList} leftButtonHeaderList = {leftButtonHeaderList}
-                             leftButtonBoxFooterTextList = {leftButtonBoxFooterTextList}/>
-                    <SmallLeftBarComponent smallLeftButtonList = {smallLeftButtonList}/>
-                    <ContentsComponent thumbnailList = {thumbnailList}/>
+                             leftButtonBoxFooterTextList = {leftButtonBoxFooterTextList} state = {setState}/>
+                    <SmallLeftBarComponent smallLeftButtonList = {smallLeftButtonList} state = {setState}/>
+                    <ContentsComponent thumbnailList = {thumbnailList}  
+                                       risingCreaterName = {risingCreaterName} risingCreaterProfile = {risingCreaterProfile} risingCreaterContentList = {risingCreaterContentList} 
+                                       risingContentList = {risingContentList}
+                                       state = {state}/>
                     <OverlayComponent/>
                 </React.Fragment>
             )
@@ -389,7 +434,8 @@
                     <LeftLogoMenuComponent childList = {props.leftLogoMenuChildList}/>
                     <LeftBoxComponent childList = {props.leftButtonChildList} 
                                       childHeaderList = {props.leftButtonHeaderList}
-                                      childListFooterList = {props.leftButtonBoxFooterTextList}/>
+                                      childListFooterList = {props.leftButtonBoxFooterTextList}
+                                      state = {props.state}/>
                 </nav>
             )
         }
@@ -400,7 +446,7 @@
                 <div id = "leftBox">
                     {
                         props.childList.map((element, index, arr) =>
-                            <LeftButtonBoxComponent key = {index} childList = {element} headerText = {props.childHeaderList[index]}/>
+                            <LeftButtonBoxComponent key = {index} childList = {element} headerText = {props.childHeaderList[index]} state = {props.state}/>
                         )
                     }
                     <LeftBoxFooterComponent childList = {props.childListFooterList}/>
@@ -411,30 +457,12 @@
 
             const className = "leftButtonBox"
             const leftButtonList = props.childList.map(element => 
-                <LeftButtonComponent key={element.text} childList={element}/>
+                <LeftButtonComponent key={element.text} childList={element} state = {props.state}/>
             )
-
-            const onClickEvent = (event) => {
-
-               const clickButton = document.getElementsByClassName("leftButton")
-               const target = event.target.title;
-
-               switch(target){
-                   case "홈":
-                       state = target
-                       break
-
-                   case "탐색":
-                       state = target
-                       break
-               }
-
-               console.log(state)
-            }
 
             if(props.headerText == ""){
                 return(
-                    <div className = {className} onClick={onClickEvent}>
+                    <div className = {className}>
                         {leftButtonList}
                     </div>
                 )
@@ -447,7 +475,7 @@
                 )
             }
         }
-        const LeftButtonComponent = (props) => <ImgTextInDivComponent className = "leftButton" childList = {props.childList}/>
+        const LeftButtonComponent = (props) => <ImgTextInDivComponent className = "leftButton" childList = {props.childList} state = {props.state}/>
         const LeftBoxFooterComponent = (props) => {
 
             return(
@@ -480,18 +508,18 @@
                 <nav id = "smallLeftBar">
                     {
                         props.smallLeftButtonList.map((element, index, arr) =>
-                            <SmallLeftBarButtonComponent key = {index} childList = {element}/> 
+                            <SmallLeftBarButtonComponent key = {index} childList = {element} state = {props.state}/> 
                         )
                     }
                 </nav>
             )
         }
-        const SmallLeftBarButtonComponent = (props) => <ImgTextInDivComponent className = "smallLeftBarButton" childList = {props.childList}/>
+        const SmallLeftBarButtonComponent = (props) => <ImgTextInDivComponent className = "smallLeftBarButton" childList = {props.childList} state = {props.state}/>
 
 
         const ContentsComponent = (props) => {
 
-            if(state == "홈" || state == ""){
+            if(props.state == "홈" || props.state == ""){
                 return (
                     <main id = "contents">
                         {
@@ -500,9 +528,12 @@
                         }
                     </main>
                 )
-            }else if(state == "탐색"){
+            }else if(props.state == "탐색"){
                 return (
-                    <main id = "compassContents">
+                    <main id = "navContents">
+                        <NavContentComponent name = {props.risingCreaterName} profile = {props.risingCreaterProfile} content = {props.risingCreaterContentList}/>
+                        <ContourComponent/>
+                        <NavContentVerticalComponent name = "인기 급상승 동영상" content = {props.risingContentList}/>
                     </main>
                 )
             }
@@ -515,41 +546,149 @@
             return(
                 <main className = {className}>
                     <ImgComponent className = {`${className}Img`} src = {childList.src}/>
-                    <ThumbnailTitle childList = {childList}/>
+                    <ThumbnailTitle className = {className} childList = {childList}/>
                 </main>
             )
         }
         const ThumbnailTitle = (props) => {
 
-            const className = "thumbnailTitle"
+            const className = props.className + "Title"
             const childList = props.childList
 
             return(
                 <div className = {className}>
                     <ImgComponent className = {`${className}Profile`} src = {childList.profile}/>
-                    <ThumbnailTextBox childList = {childList}/>
+                    <ThumbnailTextBox className = {props.className} childList = {childList}/>
                 </div>
             )
         }
         const ThumbnailTextBox = (props) => {
 
-            const childClassName = "thumbnailUpload"
+            const childClassName = props.className + "Upload"
             const childList = props.childList
 
             return(
-                <div className = "thumbnailTextBox">
+                <div className = {`${props.className}TextBox`}>
                     <H1Component className = {`${childClassName}Title`} text = {childList.title}/>
                     <PComponent className = {`${childClassName}erName`} text = {childList.userName}/>
                     <PComponent className = {`${childClassName}Date`} text = {childList.date}/>
                 </div>
             )
         }
+ 
 
+        const NavContentComponent = (props) => {
+            
+            const className = "navContent"
+
+            return(
+                <div className = {className}>
+                    <NavContentHeaderComponent className={className} profile = {props.profile} name = {props.name}/>
+                    <NavThumbnailBoxComponent content = {props.content}/>
+                </div>
+            )
+        }
+        const NavContentHeaderComponent = (props) => {
+
+            const className = props.className + "Header"
+
+            return (
+                <div className = {className}>
+                    <H2Component className = {className} text = {props.name}/>
+                </div>
+            )
+        }
+        const NavThumbnailBoxComponent = (props) => {
+
+            const className = "navThumbnail"
+
+            return(
+                <div className = {`${className}Box`}>
+                    {
+                        props.content.map((element, index, arr) => 
+                            <NavThumbnailComponent key = {index} className = {className} content = {element}/>
+                        )
+                    }
+                </div>
+            )
+        }
+        const NavThumbnailComponent = (props) => {
+
+            const content = props.content
+
+            return(
+                <div className = {props.className}>
+                    <ImgComponent src = {content.src}/>
+                    <NavThumbnailTextBoxComponent className = {props.className} content = {content}/>
+                </div>
+            )
+        }
+        const NavThumbnailTextBoxComponent = (props) => {
+
+            const content = props.content
+
+            return(
+                <div className = {`${props.className}TextBox`}>
+                    <H2Component className = {`${props.className}Title`} text = {content.title}/>
+                    <PComponent className = {`${props.className}UploaderName`} text = {content.name}/>
+                    <PComponent className = {`${props.className}ViewCount`} text = {`조회수 ${content.viewCount}회`}/>
+                </div>
+            )
+        }
+        const NavContentVerticalComponent = (props) => {
+
+            const className = "navContent"
+
+            return(
+                <div className = {`${className}Vertical`}>
+                    <NavContentHeaderComponent className={className} profile = {props.profile} name = {props.name}/>
+                    {
+                        props.content.map((element, index, arr) => 
+                            <NavThumbnailVertiaclComponent key = {index} className = "navThumbnailVertical" content = {element}/>)
+                    }
+                </div>
+            )
+        }
+        const NavThumbnailVertiaclComponent = (props) => {
+
+            const content = props.content
+
+            return(
+                <div className = {props.className}>
+                    <ImgComponent src = {content.src}/>
+                    <NavThumbnailVerticalTextBoxComponent className = {props.className} content = {content}/>
+                </div>
+            )
+        }
+        const NavThumbnailVerticalTextBoxComponent = (props) => {
+
+            const content = props.content
+
+            return(
+                <div className = {`${props.className}TextBox`}>
+                    <H2Component className = {`${props.className}Title`} text = {content.title}/>
+                    <NavThumbnailVertiaclMetaDataBox className = {props.className} content = {content}/>
+                    <PComponent className = {`${props.className}Description`} text = {content.description}/>
+                </div>
+            )
+        }
+        const NavThumbnailVertiaclMetaDataBox = (props) => {
+
+            const content = props.content
+
+            return(
+                <div className = {`${props.className}MetaDataBox`}>
+                    <PComponent className = {`${props.className}UploaderName`} text = {content.name}/>
+                    <PComponent className = {`${props.className}ViewCount`} text = {`조회수 ${content.viewCount}회`}/>
+                </div>
+            )
+        }
 
         const OverlayComponent = () => <ButtonComponent id = "overlay" style={{display:"none"}}/>
 
 
-        const H1Component = (props) => <h1 className = {props.clasName}>{props.text}</h1>
+        const H1Component = (props) => <h1 className = {props.className}>{props.text}</h1>
+        const H2Component = (props) => <h2 className = {props.className}>{props.text}</h2>
         const PComponent = (props) => <p className = {props.className}>{props.text}</p>
         const SpanComponent = (props) => <span className = {props.className}>{props.text}</span>
         const ImgComponent = (props) => <img className={props.className} src={props.src}/>
@@ -565,28 +704,15 @@
                     case "overlay":
                         const leftBar = document.getElementById("leftBar")
                         const contents = document.getElementById("contents")
+                        const smallLeftBar = document.getElementById("smallLeftBar")
+                        const navContents = document.getElementById("navContents")
 
-                        if(leftBar.style.left == "-251px"){
-                            leftBar.style.left = "0";
-                            smallLeftBar.style.display = "none";
-                            contents.style.marginLeft = "266px";
-                            contents.style.width = "calc(100% - 266px)";
-                            if(matchMedia("screen and (max-width: 1280px)").matches){
-                                document.getElementById("overlay").style.display = "block"
-                            }
+                        if(contents != undefined){
+                            transition(leftBar, smallLeftBar, contents)
+                        }else{
+                            transition(leftBar, smallLeftBar, navContents)
                         }
-                        else{
-                            leftBar.style.left = "-251px";
-                            smallLeftBar.style.display = "inline-flex";
-                            contents.style.marginLeft = "89px";
-                            contents.style.width = "calc(100% - 89px)";
-                            if(matchMedia("screen and (max-width: 9999px)").matches){
-                                document.getElementById("overlay").style.display = "none"
-                            }
-                        }
-                        break
-
-                    
+                        break   
                 }
             }
 
@@ -608,12 +734,57 @@
 
             const childList = props.childList
 
+            const onClickEvent = (event) => {
+
+                props.state(event.currentTarget.title)
+
+                const leftBar = document.getElementById("leftBar")
+                const contents = document.getElementById("contents")
+                const smallLeftBar = document.getElementById("smallLeftBar")
+                const navContents = document.getElementById("navContents")
+                
+                leftBar.style.left = "-251px"
+                smallLeftBar.style.display = "inline-flex"
+
+                if(event.currentTarget.title == "홈"){
+                    contents.style.marginLeft = "89px"
+                    contents.style.width = "calc(100% - 89px)"
+                }else if(event.currentTarget.title == "탐색"){
+                    navContents.style.marginLeft = "89px"
+                    navContents.style.width = "calc(100% - 89px)"
+                }
+                if(matchMedia("screen and (max-width: 9999px)").matches){
+                    document.getElementById("overlay").style.display = "none"
+                }
+            }
+
             return(
-                <div title = {childList.text} className = {props.className}>
+                <div title = {childList.text} className = {props.className} onClick={onClickEvent}>
                     <ImgComponent className = {`${props.className}Img`} src = {childList.src}/>
                     <PComponent className = {`${props.className}Text`} text = {childList.text}/>
                 </div>
             )
+        }
+        const ContourComponent = () => <div className = "contour"></div>
+        const transition = (leftBar, smallLeftBar, main) => {
+            if(leftBar.style.left == "-251px"){
+                leftBar.style.left = "0"
+                smallLeftBar.style.display = "none"
+                main.style.marginLeft = "266px"
+                main.style.width = "calc(100% - 266px)"
+                if(matchMedia("screen and (max-width: 1280px)").matches){
+                    document.getElementById("overlay").style.display = "block"
+                }
+            }
+            else{
+                leftBar.style.left = "-251px"
+                smallLeftBar.style.display = "inline-flex"
+                main.style.marginLeft = "89px"
+                main.style.width = "calc(100% - 89px)"
+                if(matchMedia("screen and (max-width: 9999px)").matches){
+                    document.getElementById("overlay").style.display = "none"
+                }
+            }
         }
     </script>
 
