@@ -7,6 +7,10 @@
         width: calc(100% - 266px);
         margin-left: 266px;
     }
+    #navContents{
+        width: calc(100% - 266px);
+        margin-left: 266px;
+    }
 }
 @media screen and (max-width: 1874px) {
     .thumbnail{
@@ -25,6 +29,10 @@
 }
 @media screen and (max-width: 1280px) {
     #contents{
+        width: calc(100% - 89px)!important;
+        margin-left: 89px!important;
+    }
+    #navContents{
         width: calc(100% - 89px)!important;
         margin-left: 89px!important;
     }
@@ -55,9 +63,15 @@
     .thumbnailTitleText{
         max-width: 190px;
     }
+    .navThumbnailVertical{
+        width: 100%;
+    }
 }
 @media screen and (max-width: 809.6px) {
     #contents{
+        justify-content: space-around;
+    }
+    #navContents{
         justify-content: space-around;
     }
     .thumbnail{
@@ -69,6 +83,10 @@
 }
 @media screen and (max-width: 660px) {
     #contents{
+        width: calc(100% - 16px)!important;
+        margin-left: 16px!important;
+    }
+    #navContents{
         width: calc(100% - 16px)!important;
         margin-left: 16px!important;
     }
@@ -110,5 +128,14 @@
     }
     #voiceSearchButton{
         display: none;
+    }
+}
+
+@media screen and (max-width: 380px) { 
+    .navThumbnailVerticalTextBox{
+        display: none;
+    }
+    .navThumbnailVertical{
+        justify-content: space-around;
     }
 }

@@ -374,10 +374,44 @@
                     src: "../img/youtube-thumbnail19.png",
                     title: "가나다라마바사아자차카타파하",
                     viewCount: 1
+                },
+                {
+                    name: risingCreaterName,
+                    src: "../img/youtube-thumbnail19.png",
+                    title: "가나다라마바사아자차카타파하",
+                    viewCount: 1
                 }
             ]
 
             const risingContentList = [
+                {
+                    src: "../img/youtube-thumbnail20.png",
+                    title: "가나다라마바사아자차카타파하",
+                    name: "조민혁",
+                    description: "아름다운 우리말 사랑해요 세종대왕 한글만만세",
+                    viewCount: 0
+                },
+                {
+                    src: "../img/youtube-thumbnail20.png",
+                    title: "가나다라마바사아자차카타파하",
+                    name: "조민혁",
+                    description: "아름다운 우리말 사랑해요 세종대왕 한글만만세",
+                    viewCount: 0
+                },
+                {
+                    src: "../img/youtube-thumbnail20.png",
+                    title: "가나다라마바사아자차카타파하",
+                    name: "조민혁",
+                    description: "아름다운 우리말 사랑해요 세종대왕 한글만만세",
+                    viewCount: 0
+                },
+                {
+                    src: "../img/youtube-thumbnail20.png",
+                    title: "가나다라마바사아자차카타파하",
+                    name: "조민혁",
+                    description: "아름다운 우리말 사랑해요 세종대왕 한글만만세",
+                    viewCount: 0
+                },
                 {
                     src: "../img/youtube-thumbnail20.png",
                     title: "가나다라마바사아자차카타파하",
@@ -430,7 +464,7 @@
         const LeftBarComponent = (props) => {
 
             return (
-                <nav id="leftBar">
+                <nav id="leftBar" style ={{left: "-251px"}}>
                     <LeftLogoMenuComponent childList = {props.leftLogoMenuChildList}/>
                     <LeftBoxComponent childList = {props.leftButtonChildList} 
                                       childHeaderList = {props.leftButtonHeaderList}
@@ -505,7 +539,7 @@
         const SmallLeftBarComponent = (props) => {
 
             return(
-                <nav id = "smallLeftBar">
+                <nav id = "smallLeftBar" style = {{display: "inline-flex"}}>
                     {
                         props.smallLeftButtonList.map((element, index, arr) =>
                             <SmallLeftBarButtonComponent key = {index} childList = {element} state = {props.state}/> 
@@ -521,7 +555,7 @@
 
             if(props.state == "홈" || props.state == ""){
                 return (
-                    <main id = "contents">
+                    <main id = "contents" style={{marginLeft: "89px",width: "calc(100% - 89px)"}}>
                         {
                             props.thumbnailList.map((element, index, arr) =>
                                 <ThumbnailComponent key = {index} childList = {element}/>)
@@ -530,10 +564,12 @@
                 )
             }else if(props.state == "탐색"){
                 return (
-                    <main id = "navContents">
+                    <main id = "navContents" style={{marginLeft: "89px",width: "calc(100% - 89px)"}}>
                         <NavContentComponent name = {props.risingCreaterName} profile = {props.risingCreaterProfile} content = {props.risingCreaterContentList}/>
                         <ContourComponent/>
                         <NavContentVerticalComponent name = "인기 급상승 동영상" content = {props.risingContentList}/>
+                        <ContourComponent/>
+                        <NavContentComponent name = {props.risingCreaterName} profile = {props.risingCreaterProfile} content = {props.risingCreaterContentList}/>
                     </main>
                 )
             }
@@ -627,6 +663,18 @@
 
             const content = props.content
 
+            // window.addEventListener("resize", () =>{
+            //     const navContentsWidth = window.innerWidth - 150
+            //     const navThumbnailWidth = document.getElementsByClassName("navThumbnail").length * 180
+            //     const backForwardList = document.getElementsByClassName("backForwardButton") 
+
+            //     if(navContentsWidth < navThumbnailWidth){
+            //         Array.from(backForwardList).forEach(element => element.style.visibility = "visible")
+            //     }else{
+            //         Array.from(backForwardList).forEach(element => element.style.visibility = "hidden"); 
+            //     }
+            // })
+
             return(
                 <div className = {`${props.className}TextBox`}>
                     <H2Component className = {`${props.className}Title`} text = {content.title}/>
@@ -687,9 +735,9 @@
         const OverlayComponent = () => <ButtonComponent id = "overlay" style={{display:"none"}}/>
 
 
-        const H1Component = (props) => <h1 className = {props.className}>{props.text}</h1>
-        const H2Component = (props) => <h2 className = {props.className}>{props.text}</h2>
-        const PComponent = (props) => <p className = {props.className}>{props.text}</p>
+        const H1Component = (props) => <h1 title = {props.text} className = {props.className}>{props.text}</h1>
+        const H2Component = (props) => <h2 title = {props.text} className = {props.className}>{props.text}</h2>
+        const PComponent = (props) => <p title = {props.text} className = {props.className}>{props.text}</p>
         const SpanComponent = (props) => <span className = {props.className}>{props.text}</span>
         const ImgComponent = (props) => <img className={props.className} src={props.src}/>
         const ButtonComponent = (props) => {
@@ -697,7 +745,7 @@
             const menuClickEvent = (event) => {
 
                 const target = event.currentTarget.id;
-                
+                console.log(target)
                 switch(target){
                     case "menu":
                     case "leftMenu":
@@ -712,7 +760,20 @@
                         }else{
                             transition(leftBar, smallLeftBar, navContents)
                         }
-                        break   
+                        break 
+                    
+                    case "backButton":
+                    case "forwardButton":
+                        const navThumbnailBox = document.getElementsByClassName("navThumbnailBox")
+                        const navThumbnail = document.getElementsByClassName("navThumbnail")
+                        const navContentsWidth = window.innerWidth - 150
+
+                        console.log(navThumbnailBox[0].scrollWidth)
+                        console.log(navThumbnail[0].scrollWidth)
+                        console.log(navContentsWidth)
+
+                        
+
                 }
             }
 
@@ -745,16 +806,15 @@
                 
                 leftBar.style.left = "-251px"
                 smallLeftBar.style.display = "inline-flex"
+                document.getElementById("overlay").style.display = "none"
 
+                console.log(event.currentTarget.title)
                 if(event.currentTarget.title == "홈"){
                     contents.style.marginLeft = "89px"
                     contents.style.width = "calc(100% - 89px)"
                 }else if(event.currentTarget.title == "탐색"){
                     navContents.style.marginLeft = "89px"
                     navContents.style.width = "calc(100% - 89px)"
-                }
-                if(matchMedia("screen and (max-width: 9999px)").matches){
-                    document.getElementById("overlay").style.display = "none"
                 }
             }
 

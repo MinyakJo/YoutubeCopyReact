@@ -6,7 +6,8 @@
     margin-left: 89px;
     margin-right: 16px;
     margin-top: 78px;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     flex-wrap: wrap;
     transition: all 0.7s;
 }
@@ -47,7 +48,27 @@
 .navThumbnailBox{
     display: flex;
     width: 100%;
-    height: 100%;
+    padding-bottom: 10px;
+    overflow-x: hidden;
+    align-items: center;
+}
+.backForwardButton{
+    display: flex;
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    top: 25%;
+    visibility: hidden;
+    background-color: white;
+    border-radius: 100px;
+    align-items: center;
+    justify-content: center;
+}
+.backForwardButton img{
+    width: 50%;
+}
+#forwardButton{
+    right: 2%;
 }
 .navThumbnail{
     display: flex;
@@ -75,7 +96,6 @@
     max-width: 164px;
     max-height: 50px;
     text-overflow: ellipsis;
-    overflow: hidden;
     word-wrap: break-word;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -107,7 +127,6 @@
 
 .navContentVertical{
     width: 100%;
-    height: 100%;
     flex-wrap: wrap;
     margin-bottom: 12px;
 }
@@ -165,4 +184,15 @@
 
     margin-top: 8px;
     font-size: 10px;
+}
+
+.navThumbnailBox:hover{
+    overflow-x: scroll;
+}
+.navThumbnailBox::-webkit-scrollbar{
+    height: 7px;
+}
+.navThumbnailBox::-webkit-scrollbar-thumb{
+    background-color: #E2E2E2;
+    border-radius: 10px;
 }
